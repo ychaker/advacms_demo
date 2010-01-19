@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title><%= @section.title %></title>
+    <%= theme_stylesheet_link_tag 'nvc', 'nvc/vet10.css' %> 
+    <%= yield :head %> 
+  </head>
+  <body>
+    <div id="top"><a href="#content">Skip to content</a></div>
+    <div id="wrapper">
+			<div id="header">
+				<%= render :partial => "/partials/header_image" %>
+			</div>
+
+			<div id="aside">
+				<div id="nav_left">
+					<%= Menus::Sections.new.build(self).root.render(:id => 'sections') %>
+				</div>
+					<%= render :partial => "/partials/medal_image" %>
+			</div><!-- #aside -->
+
+			<div id="content">
+				<div id="intro">
+					<h2><%= @section.title %></h2>
+				</div><!-- #intro -->
+
+				<div id="content_main">
+					<%= yield %>
+				</div><!-- #content_main -->
+			</div><!-- #content -->
+			<div style='clear:both' />
+			<div id="footer">
+				<%= Menus::Sections.new.build(self).root.render(:id => 'sections') %>
+			</div>
+    </div>
+  </body>
+</html>
